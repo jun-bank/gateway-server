@@ -155,7 +155,18 @@ public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
 }
 ```
 
-추후 OAuth2 Resource Server 설정이 추가될 예정입니다.
+### 추후 구현 예정 (JWT 인증)
+
+| 구성 요소 | 설명 |
+|----------|------|
+| `JwtAuthenticationFilter` | JWT 토큰 검증 필터 |
+| `JwtProperties` | JWT 설정값 (secret, issuer 등) |
+| 인증 헤더 주입 | `X-User-Id`, `X-User-Role`, `X-User-Email` 헤더로 내부 서비스에 전달 |
+
+**인증 흐름 (구현 예정)**
+```
+Client → Gateway → JWT 검증 → 헤더 주입 → 내부 서비스
+```
 
 ---
 
